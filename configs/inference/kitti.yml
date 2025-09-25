@@ -1,0 +1,12 @@
+checkpoint: /scratch/work/jayawin1/article_4/videosaur/videosaur/checkpoints/videosaur_dinov2.ckpt
+model_config: /scratch/work/jayawin1/article_4/videosaur/configs/videosaur/ytvis_dinov2.yml
+n_slots_min: 4
+input:
+  folder: '/scratch/work/jayawin1/article_3/kitti_data/BBOX_tracking/data_tracking_image_2/training/image_02/0000'
+  type: video
+  transforms:
+    use_movi_normalization: false
+    dataset_type: video
+    input_size: 518
+output:
+  save_path: /scratch/work/jayawin1/article_4/videosaur/test_videos_output/kitti_sample_output.gif #PH
