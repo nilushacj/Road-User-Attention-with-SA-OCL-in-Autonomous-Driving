@@ -2,8 +2,6 @@
 
 This repository is aimed at bridging the gap of leveraging object centric learning **from** *generic object classes in synthetic datasets* **to** *application specific, targeted detection (road users) in autonomous driving datasets*. Specifically, we focus on leveraging slot-attention based object centric learning to filter nearby road users, based on detected cues of proximity and motion. The motivation for the work originates from the model developed in [1], and evaluating its viability to filter high-priority road user via scene decomposition + object discovery in various autonomous driving settings. 
 
-## Samples (auto-playing)
-
 <table>
   <tr>
     <td>
