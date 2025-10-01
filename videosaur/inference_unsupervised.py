@@ -91,8 +91,8 @@ def main(config):
     model, _ = load_model_from_checkpoint(config.checkpoint, config.model_config)
 
     # Get path to TFDS and load dataset for inference
-    data_dir = '/scratch/eng/t212-amlab/waymo/waymo-video-tfds-40' #TODO: Change
-    original_data_path = '/scratch/eng/t212-amlab/waymo/waymo_ds_v_1_4_1/' #TODO: Change
+    data_dir = './waymo/waymo-video-tfds-40' #TODO: Change as needed
+    original_data_path = './waymo/waymo_ds_v_1_4_1/' #TODO: Change as needed
 
     vn, vn_info = tfds.load(
     'waymo_video/video40',
@@ -151,7 +151,7 @@ def main(config):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Perform inference on a single MP4 video.")
-    parser.add_argument("--config", default="configs/inference/waymo_tfds.yml", help="Configuration to run")
+    parser.add_argument("--config", default="configs/inference/waymo.yml", help="Configuration to run")
     args = parser.parse_args()
     config = OmegaConf.load(args.config)
     main(config)

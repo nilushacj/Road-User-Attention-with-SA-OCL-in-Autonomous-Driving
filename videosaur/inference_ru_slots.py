@@ -12,7 +12,7 @@ import math
 import re
 
 # Update multiple settings
-settings.update({"runs_dir": "/scratch/work/jayawin1/yolo_runs", "weights_dir": "/scratch/work/jayawin1/yolo_weights"}) #TODO: Edit paths (empty folders)
+settings.update({"runs_dir": "./yolo_runs", "weights_dir": "./yolo_weights"}) #TODO: Edit paths (empty folders) as needed
 
 def video_to_numpy(video_path):
     cap = cv2.VideoCapture(video_path)
@@ -42,12 +42,12 @@ def numeric_key(path):
 model = YOLO("yolo11n.pt")  # load an official model
 
 # Video directory
-video_dir = "/scratch/eng/t212-amlab/waymo/unsupervised_inference_results" # TODO:Change path
+video_dir = "./waymo/unsupervised_inference_results" # TODO:Change path as needed
 video_paths = sorted(glob.glob(os.path.join(video_dir, '*.mp4')), key=numeric_key)
 
 video_names = []
 
-active_slots_file = "/scratch/eng/t212-amlab/waymo/road_user_slots_waymo.txt"# TODO:Change path
+active_slots_file = "./waymo/road_user_slots_waymo.txt"# TODO:Change path as needed
 with open(active_slots_file, 'w') as f:
     pass  # just clear the file
 

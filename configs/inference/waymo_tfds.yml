@@ -1,12 +1,12 @@
-checkpoint: /scratch/work/jayawin1/article_4/Priority_RUs/videosaur/checkpoints/videosaur_dinov2.ckpt #TODO change
-model_config: /scratch/work/jayawin1/article_4/Priority_RUs/configs/videosaur/ytvis_dinov2.yml #TODO change
+checkpoint: /PATH/TO/DIR/checkpoints/videosaur_dinov2.ckpt #TODO change
+model_config: /PATH/TO/DIR/configs/videosaur/ytvis_dinov2.yml #TODO change
 n_slots_min: 4 
 input:
-  folder: /scratch/eng/t212-amlab/waymo/waymo-video-tfds-40 #TODO change
+  folder: /PATH/TO/DIR/waymo/waymo-video-tfds-40 #TODO change
   type: video
   transforms:
     use_movi_normalization: false
     dataset_type: video
     input_size: 518
 output:
-  save_folder: /scratch/eng/t212-amlab/waymo/unsupervised_inference_results #TODO change
+  save_folder: /PATH/TO/DIR/waymo/unsupervised_inference_results #TODO change
