@@ -12,7 +12,7 @@ import math
 import re
 
 # Update multiple settings
-settings.update({"runs_dir": "/scratch/work/jayawin1/yolo_runs", "weights_dir": "/scratch/work/jayawin1/yolo_weights"})
+settings.update({"runs_dir": "/scratch/work/jayawin1/yolo_runs", "weights_dir": "/scratch/work/jayawin1/yolo_weights"}) #TODO: Edit paths (empty folders)
 
 def video_to_numpy(video_path):
     cap = cv2.VideoCapture(video_path)
@@ -35,20 +35,19 @@ def video_to_numpy(video_path):
     return video_array
 
 def numeric_key(path):
-    # Extract the number after “validation_sample_” and before “.mp4”
-    m = re.search(r'validation_sample_(\d+)\.mp4$', path) #TODO: Change for split
+    m = re.search(r'validation_sample_(\d+)\.mp4$', path) #TODO: Change for split (train|validation)
     return int(m.group(1)) if m else -1
 
 # Load a model
 model = YOLO("yolo11n.pt")  # load an official model
 
 # Video directory
-video_dir = "/scratch/eng/t212-amlab/waymo/unsupervised_videosaur_valid_waymo_ablation_4" #TODO:CHANGE
+video_dir = "/scratch/eng/t212-amlab/waymo/unsupervised_inference_results" # TODO:Change path
 video_paths = sorted(glob.glob(os.path.join(video_dir, '*.mp4')), key=numeric_key)
 
 video_names = []
 
-active_slots_file = "/scratch/eng/t212-amlab/waymo/active_slots_waymo_valid_4.txt"#TODO:CHANGE
+active_slots_file = "/scratch/eng/t212-amlab/waymo/road_user_slots_waymo.txt"# TODO:Change path
 with open(active_slots_file, 'w') as f:
     pass  # just clear the file
 
@@ -66,12 +65,11 @@ for v_i, video_path in enumerate(video_paths):
         # Predetermined thresholds (adjust these as needed)
         threshold_area_ratio = 0.05    # e.g. cumulative detection area threshold
         threshold_confidence = 0.50    # e.g. highest confidence
-        #threshold_dets_max = 4 
-        # Allowed road users
+
+        # Allowed road users (coco categories)
         road_user_ids = {0, 1, 2, 3, 5, 6, 7}
 
         conf_max = 0.85 # full alpha
-
 
         for frame_id, frame in enumerate(video_np):
             frame = frame[:1038, :3118, :]
@@ -101,7 +99,6 @@ for v_i, video_path in enumerate(video_paths):
                     break
                 else:
                     no_of_total_slots = no_of_total_slots + 1
-            #print(f'{frame_id} slot count: {no_of_total_slots}')
             if first_black_index is not None:
                 # Black out all images from the identified index
                 # but if that is negative (i.e. if the first sub-image is black), use index 0.
@@ -116,7 +113,6 @@ for v_i, video_path in enumerate(video_paths):
                     right = left + sub_w
                     frame[top:bottom, left:right, :] = 0
             
-            #valid_dets = 0
             # Loop over each sub-image (row-major order) to filter
             for i in range(nrows * ncols):
                 r = i // ncols  # row index (0 or 1)
@@ -141,7 +137,6 @@ for v_i, video_path in enumerate(video_paths):
                 result = results[0]
                 
                 # Retrieve detection info: bounding boxes, classes, and confidence scores.
-                # Note: result.boxes.* returns tensor-like objects; we convert to NumPy for processing.
                 boxes = result.boxes.xyxy.cpu().numpy()  # shape (N,4): [x1, y1, x2, y2]
                 classes = result.boxes.cls.int().cpu().numpy()  # class indices for each detection
                 confs = result.boxes.conf.cpu().numpy()  # confidence scores for each detection
@@ -172,7 +167,6 @@ for v_i, video_path in enumerate(video_paths):
                     if (confs[j] > threshold_confidence):
                         boxes_to_overlay.append([x1, y1, x2, y2])
                         confs_filtered.append(confs[j])
-
 
                 # Compute the union of all boxes
                 if detection_boxes:
