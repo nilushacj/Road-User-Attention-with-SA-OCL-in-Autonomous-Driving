@@ -5,37 +5,24 @@ This repository is aimed at bridging the gap of leveraging object centric learni
 <table>
   <tr>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <img src="samples/sample_1.gif" width="240"/>
     </td>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_2.mp4" type="video/mp4" />
-      </video>
+      <img src="samples/sample_2.gif" width="240"/>
     </td>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_3.mp4" type="video/mp4" />
-      </video>
+      <img src="samples/sample_3.gif" width="240"/>
     </td>
   </tr>
   <tr>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_4.mp4" type="video/mp4" />
-      </video>
+      <img src="samples/sample_4.gif" width="240"/>
     </td>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_5.mp4" type="video/mp4" />
-      </video>
+      <img src="samples/sample_5.gif" width="240"/>
     </td>
     <td>
-      <video width="240" muted autoplay loop playsinline preload="metadata">
-        <source src="samples/sample_6.mp4" type="video/mp4" />
-      </video>
+      <img src="samples/sample_6.gif" width="240"/>
     </td>
   </tr>
 </table>
