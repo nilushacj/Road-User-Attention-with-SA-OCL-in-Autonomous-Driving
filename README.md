@@ -30,7 +30,7 @@ This repository is aimed at bridging the gap of leveraging object centric learni
 
 ## Pre-requisites for execution
 
-- For dataset preparation, refer to the Waymo [2] sub-section of the repo here: https://github.com/nilushacj/Slot-attention-SAVi-adapt
+- **For dataset preparation, refer to the Waymo [2] sub-section of the repo here: https://github.com/nilushacj/Slot-attention-SAVi-adapt**
 
 - Create the virtual environments for installing the required libraries and dependencies using the provided **env_unsupervised/requirements.yaml** and **env_rus/requirements.yaml** file. 
 
